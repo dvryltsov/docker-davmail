@@ -1,8 +1,9 @@
 FROM openjdk:8-jre-alpine
 
-MAINTAINER jberrenberg v5.5.1
+ENV DAVMAIL_VERSION=6.0.0
+ENV DAVMAIL_BUILD=3375
 
-ADD https://downloads.sourceforge.net/project/davmail/davmail/5.5.1/davmail-5.5.1-3299.zip /tmp/davmail.zip
+ADD https://downloads.sourceforge.net/project/davmail/davmail/${DAVMAIL_VERSION}/davmail-${DAVMAIL_VERSION}-${DAVMAIL_BUILD}.zip /tmp/davmail.zip
 
 RUN adduser davmail -D && \
   mkdir /usr/local/davmail && \
@@ -18,6 +19,7 @@ EXPOSE        1389
 EXPOSE        1110
 EXPOSE        1025
 WORKDIR       /usr/local/davmail
+COPY davmail.properties /etc/davmail/davmail.properties
 
 USER davmail
 
