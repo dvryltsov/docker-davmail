@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+    davmail:
+        build:
+            context: .
+        ports:
+            - "1080:1080"
+            - "1143:1143"
+            - "1389:1389"
+            - "1110:1110"
+            - "1025:1025"
+        restart: always
